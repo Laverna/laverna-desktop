@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Laverna
+Comment=Laverna - note taking app
+Exec=/usr/share/laverna/laverna
+Icon=laverna
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;

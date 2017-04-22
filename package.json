@@ -5,10 +5,15 @@
   "version": "0.7.4",
   "description": "Note-taking app",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Laverna/laverna-desktop"
+  },
   "scripts": {
     "start": "electron .",
     "debug": "electron . --dev --enable-logging",
     "build": "node res/build",
+    "linux": "node res/build/linux.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
