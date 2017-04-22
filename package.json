@@ -1,0 +1,23 @@
+{
+  "name": "laverna-desktop",
+  "license": "MPL-2.0",
+  "author": "Laverna team",
+  "version": "0.7.4",
+  "description": "Note-taking app",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "debug": "electron . --dev --enable-logging",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "electron-context-menu": "^0.9.0",
+    "electron-window-state": "^4.1.1",
+    "underscore": "^1.8.3",
+    "yargs": "^7.1.0"
+  },
+  "devDependencies": {
+    "electron": "^1.6.5",
+    "electron-packager": "^8.6.0"
+  }
+}
