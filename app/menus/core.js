@@ -1,5 +1,7 @@
 'use strict';
 
+const {app} = require('electron');
+
 /**
  * Core menu items.
  */
@@ -44,12 +46,15 @@ module.exports = [
         submenu: [
             {
                 label: 'Learn more',
+                click: () => app.emit('lav:learnMore'),
             },
             {
                 label: 'Documentation',
+                click: () => app.emit('lav:docs'),
             },
             {
                 label: 'Search/Report issues',
+                click: () => app.emit('lav:report'),
             },
         ],
     },

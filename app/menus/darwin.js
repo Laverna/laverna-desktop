@@ -1,6 +1,7 @@
 'use strict';
 
-const core = require('./core');
+const core  = require('./core');
+const {app} = require('electron');
 
 /**
  * Menu for MacOS.
@@ -11,12 +12,12 @@ module.exports = [
         submenu: [
             {
                 label: 'About Laverna',
-                click: () => {},
+                click: () => app.emit('lav:about'),
             },
             {type: 'separator'},
             {
                 label: 'Settings',
-                click: () => {},
+                click: () => app.emit('lav:settings'),
             },
             {type: 'separator'},
             {

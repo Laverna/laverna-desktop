@@ -5,8 +5,9 @@ const contextMenu   = require('electron-context-menu');
 const path          = require('path');
 const WindowManager = require('./WindowManager');
 const SystemTray    = require('./SystemTray');
+const pkg           = require('../package.json');
 
-const {app, Menu} = electron;
+const {app, Menu, shell} = electron;
 
 /**
  * The application class.
@@ -70,6 +71,14 @@ class App {
 
         // Listen to events emitted by the main window
         this.winManager.listenToMain();
+
+        // Laverna events
+        app.on('lav:about',     () => this.winManager.sendShow('lav:about'));
+        app.on('lav:settings',  () => this.winManager.sendShow('lav:settings'));
+        app.on('lav:newNote',   () => this.winManager.sendShow('lav:newNote'));
+        app.on('lav:learnMore', () => shell.openExternal(pkg.homePage));
+        app.on('lav:docs',      () => shell.openExternal(pkg.wikiPage));
+        app.on('lav:report',    () => shell.openExternal(pkg.bugs.url));
     }
 
     /**

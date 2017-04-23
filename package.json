@@ -5,9 +5,15 @@
   "version": "0.7.4",
   "description": "Note-taking app",
   "main": "index.js",
+  "homePage": "https://laverna.cc",
+  "wikiPage": "https://github.com/Laverna/laverna/wiki",
   "repository": {
     "type": "git",
     "url": "https://github.com/Laverna/laverna-desktop"
+  },
+  "bugs": {
+    "url": "https://github.com/Laverna/laverna/issues",
+    "email": "lavernaproject@gmail.com"
   },
   "scripts": {
     "start": "electron .",
