@@ -64,8 +64,12 @@ class App {
      * Start listening to events.
      */
     listenToEvents() {
+        // Listen to Electron events
         app.on('window-all-closed', this.onAllWindowClosed.bind(this));
         app.on('before-quit', this.onBeforeQuit.bind(this));
+
+        // Listen to events emitted by the main window
+        this.winManager.listenToMain();
     }
 
     /**

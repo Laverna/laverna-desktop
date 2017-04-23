@@ -1,8 +1,12 @@
 'use strict';
 
-const {BrowserWindow} = require('electron');
-const windowState     = require('electron-window-state');
-const _               = require('underscore');
+const {
+    BrowserWindow,
+    shell,
+} = require('electron');
+
+const windowState = require('electron-window-state');
+const _           = require('underscore');
 
 /**
  * Window manager.
@@ -13,6 +17,15 @@ const _               = require('underscore');
 class WindowManager {
 
     constructor(iconPath) {
+        /**
+         * URLs which are allowed to be opened in Laverna.
+         *
+         * @prop {Array}
+         */
+        this.allowedURLs = [
+            'http://localhost:9000',
+        ];
+
         /**
          * The previous state of the browser window (width, height, x&y pos)
          *
@@ -72,6 +85,34 @@ class WindowManager {
         }
 
         this.win.loadURL('http://localhost:9000');
+    }
+
+    /**
+     * Listen to events triggered by the main window.
+     */
+    listenToMain() {
+        this.win.webContents.on('will-navigate', this.handleURL.bind(this));
+        this.win.webContents.on('new-window', this.handleURL.bind(this));
+    }
+
+    /**
+     * Open an URL in an external application.
+     *
+     * @param {Object} e
+     * @param {String} url
+     */
+    handleURL(e, url) {
+        let isAllowed = false;
+        this.allowedURLs.forEach(allowed => {
+            if (url.search(allowed) !== -1) {
+                isAllowed = true;
+            }
+        });
+
+        if (!isAllowed && url.search(/^blob:/) === -1) {
+            e.preventDefault();
+            shell.openExternal(url);
+        }
     }
 
     /**
