@@ -64,7 +64,15 @@ class App {
      * Start listening to events.
      */
     listenToEvents() {
+        app.on('window-all-closed', this.onAllWindowClosed.bind(this));
         app.on('before-quit', this.onBeforeQuit.bind(this));
+    }
+
+    /**
+     * Quit the application.
+     */
+    onAllWindowClosed() {
+        app.quit();
     }
 
     /**
