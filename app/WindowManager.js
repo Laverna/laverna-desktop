@@ -7,6 +7,7 @@ const {
 
 const windowState = require('electron-window-state');
 const _           = require('underscore');
+const path        = require('path');
 
 /**
  * Window manager.
@@ -67,6 +68,7 @@ class WindowManager {
         this.win = new BrowserWindow(_.extend({}, this.options, {
             webPreferences      : {
                 nodeIntegration : false,
+                preload         : path.resolve(path.join(__dirname, 'preload.js')),
             },
         }));
 
@@ -93,6 +95,16 @@ class WindowManager {
     listenToMain() {
         this.win.webContents.on('will-navigate', this.handleURL.bind(this));
         this.win.webContents.on('new-window', this.handleURL.bind(this));
+    }
+
+    /**
+     * Emit an event to the main window and show the window.
+     *
+     * @param {String} e
+     */
+    sendShow(e) {
+        this.win.show();
+        this.win.send(e);
     }
 
     /**
