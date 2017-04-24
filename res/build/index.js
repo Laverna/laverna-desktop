@@ -11,7 +11,11 @@ const options  = {
     name      : 'Laverna',
     overwrite : true,
     arch      : 'all',
-    ignore    : ['res', '.tern-port$'],
+    ignore    : [
+        'res/build',
+        'res/linux',
+        '.tern-port$',
+    ],
 };
 
 /**
@@ -30,10 +34,10 @@ Promise.all([
     // Build for Windows
     createPackage(Object.assign({
         platform             : 'win32',
-        icon                 : path.join(__dirname, './app/dist/favicon.ico'),
+        icon                 : path.join(__dirname, '../../app/dist/favicon.ico'),
         win32metadata        : {
             CompanyName      : 'Laverna',
-            FileDescription  : 'Note taking app',
+            FileDescription  : 'Laverna - note taking app',
             OriginalFilename : 'Laverna',
             ProductName      : 'Laverna',
             InternalName     : 'Laverna',
@@ -43,7 +47,7 @@ Promise.all([
     // Build for MacOS
     createPackage(Object.assign({
         platform        : 'darwin',
-        icon            : path.join(__dirname, './app/dist/images/icon/icon-512x512.icns'),
+        icon            : path.join(__dirname, '../../app/dist/images/icon/icon-512x512.icns'),
         appBundleId     : 'laverna.cc',
         appCategoryType : 'public.app-category.productivity',
     }, options)),
