@@ -4,3 +4,6 @@
  */
 console.log('Preloading...');
 window.electron = require('electron');
+window.eval     = global.eval = () => {
+    throw new Error('Eval is disabled.');
+};

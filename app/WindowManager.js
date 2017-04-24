@@ -43,16 +43,20 @@ class WindowManager {
          * @prop {Object}
          */
         this.options = {
-            width           : this.state.width,
-            height          : this.state.height,
-            minWidth        : 370,
-            minHeight       : 520,
-            x               : this.state.x,
-            y               : this.state.y,
-            title           : 'Laverna',
-            icon            : iconPath,
-            autoHideMenuBar : true,
-            backgroundColor : '#00a693',
+            width               : this.state.width,
+            height              : this.state.height,
+            minWidth            : 370,
+            minHeight           : 520,
+            x                   : this.state.x,
+            y                   : this.state.y,
+            title               : 'Laverna',
+            icon                : iconPath,
+            autoHideMenuBar     : true,
+            backgroundColor     : '#00a693',
+            webPreferences      : {
+                contextIsolation: true,
+                nodeIntegration : false,
+            },
         };
     }
 
