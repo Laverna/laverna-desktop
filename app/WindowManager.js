@@ -25,6 +25,7 @@ class WindowManager {
          */
         this.allowedURLs = [
             'http://localhost:9000',
+            'file:///${__dirname}/dist',
         ];
 
         /**
@@ -90,7 +91,13 @@ class WindowManager {
             this.win.hide();
         }
 
-        this.win.loadURL('http://localhost:9000');
+        // If it's dev environment, don't load the local files
+        if (options.dev) {
+            this.win.loadURL('http://localhost:9000');
+        }
+        else {
+            this.win.loadURL(`file:///${__dirname}/dist/index.html`);
+        }
     }
 
     /**
