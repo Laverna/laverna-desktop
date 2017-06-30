@@ -8,8 +8,10 @@ A [Laverna](https://laverna.cc) client packaged in [Electron](https://electron.a
 
 ### Development
 1. Clone the repository
-2. Run `npm install`
-3. Run `npm start` or `npm run debug` if you want to debug the app
+2. Clone https://github.com/Laverna/laverna and build the app
+3. Copy laverna/dist directory to app/dist
+4. Run `npm install`
+5. Run `npm start` or `npm run debug` if you want to debug the app
 
 ### Creating Electron Packages
 To build electron packages for all platforms, run:
