@@ -25,7 +25,7 @@ class WindowManager {
          */
         this.allowedURLs = [
             'http://localhost:9000',
-            'file:///${__dirname}/dist',
+            `file://${__dirname}/dist/index.html`,
         ];
 
         /**
@@ -96,7 +96,7 @@ class WindowManager {
             this.win.loadURL('http://localhost:9000');
         }
         else {
-            this.win.loadURL(`file:///${__dirname}/dist/index.html`);
+            this.win.loadURL(`file://${__dirname}/dist/index.html`);
         }
     }
 
@@ -112,29 +112,83 @@ class WindowManager {
      * Emit an event to the main window and show the window.
      *
      * @param {String} e
+     * @param {Object} data
      */
-    sendShow(e) {
+    sendShow(e, data) {
         this.win.show();
-        this.win.send(e);
+        this.win.send(e, data);
     }
 
     /**
-     * Open an URL in an external application.
+     * Open a URL in an external application.
      *
      * @param {Object} e
      * @param {String} url
      */
     handleURL(e, url) {
+        if (url.search('https://www.dropbox.com/oauth2') !== -1) {
+            e.preventDefault();
+            this.openOauthWindow(url);
+        }
+        else if (!this.isAllowedUrl(url) && url.search(/^blob:/) === -1) {
+            e.preventDefault();
+            shell.openExternal(url);
+        }
+    }
+
+    /**
+     * Return true if a url can be opened in the same Laverna window.
+     *
+     * @param {String} url
+     * @returns {Boolean}
+     */
+    isAllowedUrl(url) {
         let isAllowed = false;
+
         this.allowedURLs.forEach(allowed => {
-            if (url.search(allowed) !== -1) {
+            if ((new RegExp(`^${allowed}`)).test(url)) {
                 isAllowed = true;
             }
         });
 
-        if (!isAllowed && url.search(/^blob:/) === -1) {
+        return isAllowed;
+    }
+
+    /**
+     * Open a window to do oAuth authentication.
+     *
+     * @param {String} url
+     */
+    openOauthWindow(url) {
+        /**
+         * The main browser window.
+         *
+         * @prop {Object}
+         */
+        const win = new BrowserWindow(_.extend({}, this.options, {
+            chrome : false,
+            width  : 700,
+            height : 520,
+            center : true,
+        }));
+
+        win.loadURL(url);
+        win.webContents.on('will-navigate', (e, url) => this.finalizeOauth(e, url, win));
+        win.webContents.on('closed', () => this.sendShow('lav:dropbox:oauth', {}));
+    }
+
+    /**
+     * Send the oAuth information to the main window.
+     *
+     * @param {Object} e
+     * @param {String} url
+     * @param {Object} win
+     */
+    finalizeOauth(e, url, win) {
+        if (url.search('http://localhost:9000/#access_token=') !== -1) {
             e.preventDefault();
-            shell.openExternal(url);
+            win.close();
+            this.sendShow('lav:dropbox:oauth', {url});
         }
     }
 
