@@ -12,12 +12,12 @@ module.exports = [
         submenu: [
             {
                 label: 'About Laverna',
-                click: () => app.emit('lav:about'),
+                click: () => app.emit('lav:trigger', {e: 'lav:about'}),
             },
             {type: 'separator'},
             {
                 label: 'Settings',
-                click: () => app.emit('lav:settings'),
+                click: () => app.emit('lav:trigger', {e: 'lav:settings'}),
             },
             {type: 'separator'},
             {

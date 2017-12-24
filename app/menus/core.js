@@ -7,6 +7,30 @@ const {app} = require('electron');
  */
 module.exports = [
     {
+        label: '&File',
+        submenu: [
+            {
+                label       : 'New note',
+                accelerator : 'CmdOrCtrl+N',
+                click       : () => app.emit('lav:trigger', {e: 'lav:newNote'}),
+            },
+            {type: 'separator'},
+            {
+                label   : 'Backup',
+                submenu : [
+                    {
+                        label : 'Private key',
+                        click : () => app.emit('lav:trigger', {e: 'lav:backup:key'}),
+                    },
+                    {
+                        label : 'Everything',
+                        click : () => app.emit('lav:trigger', {e: 'lav:backup:data'}),
+                    },
+                ],
+            },
+        ],
+    },
+    {
         label: '&Edit',
         submenu: [
             {role: 'undo'},

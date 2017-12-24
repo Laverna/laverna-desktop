@@ -8,16 +8,16 @@ const {app} = require('electron');
 module.exports = [
     {
         label: 'New note',
-        click: () => app.emit('lav:newNote'),
+        click: () => app.emit('lav:trigger', {e: 'lav:newNote'}),
     },
     {type: 'separator'},
     {
         label: 'Settings',
-        click: () => app.emit('lav:settings'),
+        click: () => app.emit('lav:trigger', {e: 'lav:settings'}),
     },
     {
         label: 'About',
-        click: () => app.emit('lav:about'),
+        click: () => app.emit('lav:trigger', {e: 'lav:about'}),
     },
     {type: 'separator'},
     {role: 'quit'},

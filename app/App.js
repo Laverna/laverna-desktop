@@ -73,9 +73,7 @@ class App {
         this.winManager.listenToMain();
 
         // Laverna events
-        app.on('lav:about',     () => this.winManager.sendShow('lav:about'));
-        app.on('lav:settings',  () => this.winManager.sendShow('lav:settings'));
-        app.on('lav:newNote',   () => this.winManager.sendShow('lav:newNote'));
+        app.on('lav:trigger', data => this.winManager.sendShow(data.e));
         app.on('lav:learnMore', () => shell.openExternal(pkg.homepage));
         app.on('lav:docs',      () => shell.openExternal(pkg.wikipage));
         app.on('lav:report',    () => shell.openExternal(pkg.bugs.url));
