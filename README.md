@@ -1,7 +1,9 @@
 <div align="center">
   <h1>Laverna Desktop</h1>
-  <p><strong>A [Laverna](https://laverna.cc) client packaged in [Electron](https://electron.atom.io).</strong><p>
-  [![Build Status](https://travis-ci.org/Laverna/laverna-desktop.svg?branch=dev)](https://travis-ci.org/Laverna/laverna-desktop)
+  <p><strong>A <a href="https://laverna.cc">Laverna</a> client packaged in <a href="https://electron.atom.io">Electron</a>.</strong><p>
+
+  <a href="https://travis-ci.org/Laverna/laverna-desktop"><img src="https://travis-ci.org/Laverna/laverna-desktop.svg?branch=dev" alt="Build Status" /></a>
+
 </div>
 
 ### Development Requirements
