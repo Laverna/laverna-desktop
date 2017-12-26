@@ -1,4 +1,7 @@
 /dist
+dist/
+app/ui
+ui-src
 
 # Created by https://www.gitignore.io/api/node
 

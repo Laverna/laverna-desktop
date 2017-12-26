@@ -20,7 +20,7 @@ class App {
     constructor(options) {
         // eslint-disable-next-line
         const icon      = process.platform === 'darwin' ? 'IconMenubarTemplate.png' : 'icon-120x120.png';
-        this.icon       = path.join(__dirname, '/dist/images/icon/', icon);
+        this.icon       = path.join(__dirname, '/ui/images/icon/', icon);
 
         /**
          * Command-line options.

@@ -18,6 +18,7 @@ const options = {
     ignore    : [
         'res/build',
         'res/linux',
+        'ui-src',
         '.tern-port$',
     ],
 };

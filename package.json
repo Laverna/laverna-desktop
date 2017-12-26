@@ -18,9 +18,17 @@
   "scripts": {
     "start": "electron .",
     "debug": "electron . --dev --enable-logging",
-    "build": "node res/build",
+    "setup": "npm install && npm run ui:setup",
+    "build": "npm run ui:refresh && node res/build",
     "linux": "node res/build/linux.js",
     "release": "NODE_ENV=release npm run build",
+    "ui:setup": "npm run ui:install && npm run ui:build",
+    "ui:refresh": "npm run ui:pull && npm run ui:build",
+    "ui:build": "cd ./ui-src && gulp build --distDir='../app/ui' && cd ../",
+    "ui:install": "npm run ui:clone && npm run ui:install:deps",
+    "ui:clone": "git clone https://github.com/Laverna/laverna.git -b dev ./ui-src",
+    "ui:pull": "rm -rf ./app/ui && cd ./ui-src && git pull origin dev && cd ../",
+    "ui:install:deps": "cd ./ui-src && npm install && cd ../",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

@@ -25,7 +25,7 @@ class WindowManager {
          */
         this.allowedURLs = [
             'http://localhost:9000',
-            `file://${__dirname}/dist/index.html`,
+            `file://${__dirname}/ui/index.html`,
         ];
 
         /**
@@ -96,7 +96,7 @@ class WindowManager {
             this.win.loadURL('http://localhost:9000');
         }
         else {
-            this.win.loadURL(`file://${__dirname}/dist/index.html`);
+            this.win.loadURL(`file://${__dirname}/ui/index.html`);
         }
     }
 
