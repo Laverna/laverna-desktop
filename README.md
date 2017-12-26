@@ -2,7 +2,7 @@
   <h1>Laverna Desktop</h1>
   <p><strong>A <a href="https://laverna.cc">Laverna</a> client packaged in <a href="https://electron.atom.io">Electron</a>.</strong><p>
 
-  <a href="https://travis-ci.org/Laverna/laverna-desktop"><img src="https://travis-ci.org/Laverna/laverna-desktop.svg?branch=dev" alt="Build Status" /></a>
+  <a href="https://travis-ci.org/Laverna/laverna-desktop"><img src="https://travis-ci.org/Laverna/laverna-desktop.svg?branch=master" alt="Build Status" /></a>
 
 </div>
 

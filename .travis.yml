@@ -1,6 +1,11 @@
 language: node_js
 node_js:
     - 'stable'
+before_install:
+    - sudo apt-get install ruby ruby-dev rubygems build-essential
+    - export GEM_HOME=$HOME/gems
+    - gem install --no-ri --no-rdoc fpm
+    - export PATH=$PATH:$GEM_HOME/bin
 install:
     - npm run setup
 script:
