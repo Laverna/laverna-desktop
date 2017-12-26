@@ -25,7 +25,7 @@ exec(`cp -r res/linux/laverna.desktop ${RELEASE_DIR}/usr/share/applications`, on
 
 // Copy the icon
 exec(`mkdir -p ${RELEASE_DIR}/usr/share/pixmaps`, onError);
-exec(`cp app/dist/images/icon/icon-150x150.png ${RELEASE_DIR}/usr/share/pixmaps/laverna.png`, onError);
+exec(`cp app/ui/images/icon/icon-150x150.png ${RELEASE_DIR}/usr/share/pixmaps/laverna.png`, onError);
 
 // Copy the binaries
 exec(`cp -r dist/Laverna-linux-x64 ${RELEASE_DIR}/usr/share/laverna`, onError);

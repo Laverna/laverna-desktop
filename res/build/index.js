@@ -60,7 +60,7 @@ Promise.all([
     // Build for Windows
     createPackage(Object.assign({
         platform             : 'win32',
-        icon                 : path.join(dir, '/app/dist/favicon.ico'),
+        icon                 : path.join(dir, '/app/ui/favicon.ico'),
         win32metadata        : {
             CompanyName      : 'Laverna',
             FileDescription  : 'Laverna - note taking app',
@@ -73,7 +73,7 @@ Promise.all([
     // Build for MacOS
     createPackage(Object.assign({
         platform        : 'darwin',
-        icon            : path.join(dir, '/app/dist/images/icon/icon-512x512.icns'),
+        icon            : path.join(dir, '/app/ui/images/icon/icon-512x512.icns'),
         appBundleId     : 'laverna.cc',
         appCategoryType : 'public.app-category.productivity',
     }, options)),
