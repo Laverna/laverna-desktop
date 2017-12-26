@@ -1,20 +1,20 @@
-Laverna Desktop
-===============
-A [Laverna](https://laverna.cc) client packaged in [Electron](https://electron.atom.io).
+<div align="center">
+  <h1>Laverna Desktop</h1>
+  <p><strong>A [Laverna](https://laverna.cc) client packaged in [Electron](https://electron.atom.io).</strong><p>
+  [![Build Status](https://travis-ci.org/Laverna/laverna-desktop.svg?branch=dev)](https://travis-ci.org/Laverna/laverna-desktop)
+</div>
 
 ### Development Requirements
 * [FPM](https://github.com/jordansissel/fpm) to make Linux packages
 * [Nodejs](https://nodejs.org/en/)
 
 ### Development
-1. Clone the repository
-2. Clone https://github.com/Laverna/laverna and build the app
-3. Copy laverna/dist directory to app/dist
-4. Run `npm install`
-5. Run `npm start` or `npm run debug` if you want to debug the app
+1. Clone the repository (`git clone https://github.com/Laverna/laverna-desktop`)
+2. Run `npm run setup` to install NPM dependencies and [Laverna core](https://github.com/Laverna/laverna)
+3. Run `npm start` or `npm run debug` if you want to debug the app
 
 ### Creating Electron Packages
-To build electron packages for all platforms, run:
+To build electron packages for all platforms (Windows, Linux, Mac), run:
 
 ```bash
 npm run build
