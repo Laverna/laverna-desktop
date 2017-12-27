@@ -1,8 +1,13 @@
 language: node_js
 node_js:
     - 'stable'
+addons:
+    apt:
+        packages:
+            - build-essential
+            - ruby
+            - ruby-dev
 before_install:
-    - sudo apt-get install ruby ruby-dev rubygems build-essential
     - export GEM_HOME=$HOME/gems
     - gem install --no-ri --no-rdoc fpm
     - export PATH=$PATH:$GEM_HOME/bin
