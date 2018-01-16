@@ -6,8 +6,9 @@ const path          = require('path');
 const WindowManager = require('./WindowManager');
 const SystemTray    = require('./SystemTray');
 const pkg           = require('../package.json');
+const fs            = require('fs');
 
-const {app, Menu, shell} = electron;
+const {app, Menu, shell, dialog} = electron;
 
 /**
  * The application class.
@@ -73,10 +74,25 @@ class App {
         this.winManager.listenToMain();
 
         // Laverna events
-        app.on('lav:trigger', data => this.winManager.sendShow(data.e));
+        app.on('lav:trigger', data => this.winManager.sendShow(data.e, data.data));
+        app.on('lav:import:evernote', () => this.importEvernote());
         app.on('lav:learnMore', () => shell.openExternal(pkg.homepage));
         app.on('lav:docs',      () => shell.openExternal(pkg.wikipage));
         app.on('lav:report',    () => shell.openExternal(pkg.bugs.url));
+    }
+
+    /**
+     * Import from Evernote backup file.
+     */
+    importEvernote() {
+        const fPath = dialog.showOpenDialog({
+            title      : 'Choose your Evernote backup file',
+            properties : ['openFile'],
+            filters    : [{name: 'Enex', extensions: ['enex']}],
+        })[0];
+
+        const xml   = fs.readFileSync(fPath, {encoding: 'utf8'});
+        this.winManager.sendShow('lav:import:evernote', {xml});
     }
 
     /**

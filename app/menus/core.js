@@ -16,6 +16,15 @@ module.exports = [
             },
             {type: 'separator'},
             {
+                label   : 'Import',
+                submenu : [
+                    {
+                        label: 'From Evernote',
+                        click: () => app.emit('lav:import:evernote'),
+                    },
+                ],
+            },
+            {
                 label   : 'Backup',
                 submenu : [
                     {
